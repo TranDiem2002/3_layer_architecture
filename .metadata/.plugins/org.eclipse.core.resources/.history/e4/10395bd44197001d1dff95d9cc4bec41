@@ -1,0 +1,13 @@
+package Service.impl;
+
+import Service.BuildingService;
+import Service.filter.BuildingFilter;
+
+public class BuildingServiceimpl implements BuildingService{
+
+	public BuildingFilter[] findAll(String name) {
+		
+		return null;
+	}
+	
+}

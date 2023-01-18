@@ -1,0 +1,5 @@
+package Service.filter;
+
+public class BuildingFilter {
+
+}
