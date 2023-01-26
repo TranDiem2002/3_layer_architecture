@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="Dao.impl.getConnection"/>
+<fullyQualifiedTypeName name="javax.management.loading.PrivateClassLoader"/>
+<fullyQualifiedTypeName name="Dao.BuildingDao"/>
+<fullyQualifiedTypeName name="Dao.impl.BuildingDaoimpl"/>
+<fullyQualifiedTypeName name="Dao.xulyDL.BuildingxulyDL"/>
+<fullyQualifiedTypeName name="Service.BuildingService"/>
+<fullyQualifiedTypeName name="Service.impl.BuildingServiceimpl"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="Service.filter.BuildingFilter"/>
+<fullyQualifiedTypeName name="Controller.BuildingController"/>
+<fullyQualifiedTypeName name="Model.BuildingModel"/>
+</qualifiedTypeNameHistroy>

@@ -7,7 +7,7 @@ import Model.BuildingModel;
 
 public class BuildingListView {
 
-	public static void main(String[] args) {
+	public static void thucthi(String[] args) {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Nhap ten toa nha: ");
 		String name = input.nextLine();
