@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 
 import Controller.BuildingController;
@@ -12,7 +13,7 @@ public class BuildingListView {
 		System.out.println("Nhap ten toa nha: ");
 		String name = input.nextLine();
 		BuildingController buildingController = new BuildingController();
-		BuildingModel[] buildingModels = buildingController.findAll(name);
+		List<BuildingModel> buildingModels = buildingController.findAll(name);
 		for (BuildingModel buildingModel : buildingModels) {
 			System.out.println("Ten toa nha: "+buildingModel.getName());
 		}

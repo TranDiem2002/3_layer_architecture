@@ -2,11 +2,13 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="com.laptrinhJBDC"/>
 			<item value="com.laptrinh3layer"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="JDBC"/>
 			<item value="com.laptrinh3layer"/>
 		</list>
 		<list key="projectNameTemplate">
@@ -37,6 +39,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="D:\mohinh3layer\mohinh3layer\src\Dao\impl\getConnection.java"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

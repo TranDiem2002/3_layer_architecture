@@ -1,8 +1,10 @@
 package Controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Model.BuildingModel;
 import Service.BuildingService;
-import Service.filter.BuildingFilter;
 import Service.impl.BuildingServiceimpl;
 
 public class BuildingController {
@@ -12,16 +14,8 @@ public class BuildingController {
 		buildingService = new BuildingServiceimpl();
 	}
 	
-	public BuildingModel[] findAll(String name) {
-		BuildingFilter[] buildingFilters = buildingService.findAll(name);
-		BuildingModel[] buildingModels = new BuildingModel[] {};
-		int i=0;
-		for(BuildingFilter building : buildingFilters) {
-			BuildingModel buildingModel = new BuildingModel();
-			buildingModel.setName(building.getName());
-			buildingModels[i] = buildingModel;
-			i++;
-		}
+	public List< BuildingModel> findAll(String name) {
+		List<BuildingModel> buildingModels = buildingService.findAll(name);
 		return buildingModels;
 	}
 }

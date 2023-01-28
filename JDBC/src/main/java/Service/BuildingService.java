@@ -1,8 +1,11 @@
 package Service;
 
-import Service.filter.BuildingFilter;
+import java.util.List;
+
+import Model.BuildingModel;
+
 
 public interface BuildingService {
 
-	BuildingFilter[] findAll(String name);
+	List<BuildingModel> findAll(String name);
 }

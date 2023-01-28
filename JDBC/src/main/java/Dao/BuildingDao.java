@@ -1,8 +1,10 @@
 package Dao;
 
+import java.util.List;
+
 import Dao.xulyDL.BuildingxulyDL;
 
 public interface BuildingDao {
 
-	BuildingxulyDL[] findAll(String name);
+	List<BuildingxulyDL> findAll(String name);
 }
