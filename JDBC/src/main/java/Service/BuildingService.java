@@ -7,5 +7,6 @@ import Model.BuildingModel;
 
 public interface BuildingService {
 
-	List<BuildingModel> findAll(String name);
+	List<BuildingModel> findAll();
+	List<BuildingModel> findSearch(String name);
 }

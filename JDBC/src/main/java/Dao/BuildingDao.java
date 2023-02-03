@@ -6,5 +6,6 @@ import Dao.xulyDL.BuildingxulyDL;
 
 public interface BuildingDao {
 
-	List<BuildingxulyDL> findAll(String name);
+	List<BuildingxulyDL> findAll();
+	List<BuildingxulyDL> findSearch(String names);
 }

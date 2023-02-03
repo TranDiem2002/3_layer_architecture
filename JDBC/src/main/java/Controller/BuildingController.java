@@ -14,8 +14,13 @@ public class BuildingController {
 		buildingService = new BuildingServiceimpl();
 	}
 	
-	public List< BuildingModel> findAll(String name) {
-		List<BuildingModel> buildingModels = buildingService.findAll(name);
+	public List< BuildingModel> findAll() {
+		List<BuildingModel> buildingModels = buildingService.findAll();
+		return buildingModels;
+	}
+	
+	public List< BuildingModel> findSearch(String name) {
+		List<BuildingModel> buildingModels = buildingService.findSearch(name);
 		return buildingModels;
 	}
 }

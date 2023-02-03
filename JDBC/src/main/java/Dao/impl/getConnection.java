@@ -11,7 +11,7 @@ public class getConnection {
 			String connectionUrl = "jdbc:sqlserver://localhost;database=AdventureWorks;integratedSecurity=true;";
 			String hostname = "localhost";
 			String sqlInstanceName = "LAPTOP-9KTILM0J\\SQLEXPRESS";
-			String sqlDatabaseName = " javasqlTraining";
+			String sqlDatabaseName = " javasql";
 			String sqlUser = "sa";
 			String sqlPassword = "01022002";
 
