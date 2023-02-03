@@ -2,10 +2,10 @@ package Dao;
 
 import java.util.List;
 
-import Dao.xulyDL.BuildingxulyDL;
+import Model.BuildingModel;
 
 public interface BuildingDao {
 
-	List<BuildingxulyDL> findAll();
-	List<BuildingxulyDL> findSearch(String names);
+	List<BuildingModel> findAll();
+	List<BuildingModel> findSearch(String names);
 }
