@@ -4,36 +4,37 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import Dao.BuildingDao;
+import DaoBuildingData.BuildingData;
 import Model.BuildingModel;
+import untils.getConnection;
 
 public class BuildingDaoimpl implements BuildingDao {
 
-	public List<BuildingModel> findAll() {
+	public List<BuildingData> findAll() {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		getConnection conn = new getConnection();
-		List<BuildingModel> buildingModels = new ArrayList<>();
+		List<BuildingData> buildingDatas= new ArrayList<>();
 		try {
 			connection = conn.getconnection();
 			String query = "select * from building";
 			preparedStatement = connection.prepareStatement(query.toString());
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				BuildingModel buildingModel= new BuildingModel();
-				buildingModel.setName(resultSet.getString("names"));
-				buildingModel.setNumberofbasement(resultSet.getInt("numberofbasement"));
-				buildingModel.setFloorerea(resultSet.getInt("floorarea"));
-				buildingModel.setStreet(resultSet.getString("street"));
-				buildingModel.setTypes(resultSet.getString("types"));
-				buildingModels.add(buildingModel);
+				BuildingData buildingData = new BuildingData();
+				buildingData.setName(resultSet.getString("names"));
+				buildingData.setNumberofbasement(resultSet.getInt("numberofbasement"));
+				buildingData.setFloorerea(resultSet.getInt("floorarea"));
+				buildingData.setStreet(resultSet.getString("street"));
+				buildingData.setTypes(resultSet.getString("types"));
+				buildingDatas.add(buildingData);
 			}
-			return buildingModels;
+			return buildingDatas;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -59,27 +60,27 @@ public class BuildingDaoimpl implements BuildingDao {
 	}
 
 	@Override
-	public List<BuildingModel> findSearch(String name) {
+	public List<BuildingData> findSearch(String name) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		getConnection conn = new getConnection();
-		List<BuildingModel> buildingModels = new ArrayList<>();
+		List<BuildingData> buildingDatas = new ArrayList<>();
 		try {
 			connection = conn.getconnection();
-			String query = "select * from building where names like '%"+name+"%'";
+			StringBuilder query = new StringBuilder( "select * from building where names like '%"+name+"%'");
 			preparedStatement = connection.prepareStatement(query.toString());
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				BuildingModel buildingModel= new BuildingModel();
-				buildingModel.setName(resultSet.getString("names"));
-				buildingModel.setNumberofbasement(resultSet.getInt("numberofbasement"));
-				buildingModel.setFloorerea(resultSet.getInt("floorarea"));
-				buildingModel.setStreet(resultSet.getString("street"));
-				buildingModel.setTypes(resultSet.getString("types"));
-				buildingModels.add(buildingModel);
+				BuildingData buildingData = new BuildingData();
+				buildingData.setName(resultSet.getString("names"));
+				buildingData.setNumberofbasement(resultSet.getInt("numberofbasement"));
+				buildingData.setFloorerea(resultSet.getInt("floorarea"));
+				buildingData.setStreet(resultSet.getString("street"));
+				buildingData.setTypes(resultSet.getString("types"));
+				buildingDatas.add(buildingData);
 			}
-			return buildingModels;
+			return buildingDatas;
 
 		} catch (SQLException e) {
 			e.printStackTrace();

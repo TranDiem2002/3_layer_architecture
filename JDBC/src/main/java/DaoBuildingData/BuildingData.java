@@ -1,7 +1,6 @@
-package Model;
+package DaoBuildingData;
 
-public class BuildingModel {
-
+public class BuildingData {
 	private String name;
 	private Integer numberofbasement;
 	private Integer floorerea;
@@ -49,7 +48,6 @@ public class BuildingModel {
 	public void setTypes(String types) {
 		this.types = types;
 	}
-	
 	
 	
 }
