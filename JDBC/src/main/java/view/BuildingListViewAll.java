@@ -1,6 +1,8 @@
 package view;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import Controller.BuildingController;
 import Model.BuildingModel;
@@ -17,5 +19,6 @@ public class BuildingListViewAll {
 			System.out.println("Loại tòa nhà: "+buildingModel.getTypes());
 			System.out.println("----------------------------------------------------------");
 		}
+		
 	}
 }

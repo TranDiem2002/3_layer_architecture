@@ -27,7 +27,7 @@ public class BuildingServiceimpl implements BuildingService {
 			buildingModel.setNumberofbasement(buildingData.getNumberofbasement());
 			buildingModel.setFloorerea(buildingData.getFloorerea());
 			buildingModel.setStreet(buildingData.getStreet());
-			buildingModel.setTypes(buildingTypes.checkTypes(buildingData.getTypes()));
+			buildingModel.setTypes(buildingTypes.checkTypebuilding(buildingData.getTypes()));
 			buildingModels.add(buildingModel);
 		}
 		return buildingModels;
