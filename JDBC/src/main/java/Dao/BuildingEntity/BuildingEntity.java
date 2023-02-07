@@ -1,6 +1,6 @@
-package DaoBuildingData;
+package Dao.BuildingEntity;
 
-public class BuildingData {
+public class BuildingEntity {
 	private String name;
 	private Integer numberofbasement;
 	private Integer floorerea;

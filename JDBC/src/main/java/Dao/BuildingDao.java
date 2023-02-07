@@ -2,11 +2,11 @@ package Dao;
 
 import java.util.List;
 
-import DaoBuildingData.BuildingData;
+import Dao.BuildingEntity.BuildingEntity;
 import Model.BuildingModel;
 
 public interface BuildingDao {
 
-	List<BuildingData> findAll();
-	List<BuildingData> findSearch(String names);
+	List<BuildingEntity> findAll();
+	List<BuildingEntity> findSearch(BuildingModel building);
 }

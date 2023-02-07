@@ -19,8 +19,11 @@ public class BuildingController {
 		return buildingModels;
 	}
 	
-	public List< BuildingModel> findSearch(String name) {
-		List<BuildingModel> buildingModels = buildingService.findSearch(name);
+	public List< BuildingModel> findSearch(String name,int sotang) {
+		BuildingModel building = new BuildingModel();
+		building.setName(name);
+		building.setNumberofbasement(sotang);
+		List<BuildingModel> buildingModels = buildingService.findSearch(building);
 		return buildingModels;
 	}
 }

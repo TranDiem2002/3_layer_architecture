@@ -7,26 +7,27 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Dao.BuildingEntity.BuildingEntity;
 import Dao.BuildingDao;
-import DaoBuildingData.BuildingData;
 import Model.BuildingModel;
 import untils.getConnection;
+import untils.isNullorEmpty;
 
 public class BuildingDaoimpl implements BuildingDao {
 
-	public List<BuildingData> findAll() {
+	public List<BuildingEntity> findAll() {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		getConnection conn = new getConnection();
-		List<BuildingData> buildingDatas= new ArrayList<>();
+		List<BuildingEntity> buildingDatas= new ArrayList<>();
 		try {
 			connection = conn.getconnection();
 			String query = "select * from building";
 			preparedStatement = connection.prepareStatement(query.toString());
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				BuildingData buildingData = new BuildingData();
+				BuildingEntity buildingData = new BuildingEntity();
 				buildingData.setName(resultSet.getString("names"));
 				buildingData.setNumberofbasement(resultSet.getInt("numberofbasement"));
 				buildingData.setFloorerea(resultSet.getInt("floorarea"));
@@ -56,23 +57,30 @@ public class BuildingDaoimpl implements BuildingDao {
 			}
 		}
 
-		return null;
+		return buildingDatas;
 	}
 
 	@Override
-	public List<BuildingData> findSearch(String name) {
+	public List<BuildingEntity> findSearch(BuildingModel building) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		getConnection conn = new getConnection();
-		List<BuildingData> buildingDatas = new ArrayList<>();
+		List<BuildingEntity> buildingDatas = new ArrayList<>();
 		try {
 			connection = conn.getconnection();
-			StringBuilder query = new StringBuilder( "select * from building where names like '%"+name+"%'");
+			StringBuilder query = new StringBuilder( "select * from building where 1= 1 ");
+			if(!isNullorEmpty.check(building.getName())) {
+				query.append("and names like'%"+building.getName()+"%'");
+			}
+			if(building.getNumberofbasement() != null) {
+				query.append("and numberofbasement = "+building.getNumberofbasement()+"");
+			}
+			System.out.println(query);
 			preparedStatement = connection.prepareStatement(query.toString());
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				BuildingData buildingData = new BuildingData();
+				BuildingEntity buildingData = new BuildingEntity();
 				buildingData.setName(resultSet.getString("names"));
 				buildingData.setNumberofbasement(resultSet.getInt("numberofbasement"));
 				buildingData.setFloorerea(resultSet.getInt("floorarea"));
@@ -102,7 +110,7 @@ public class BuildingDaoimpl implements BuildingDao {
 			}
 		}
 
-		return null;
+		return buildingDatas;
 	}
 
 }

@@ -17,16 +17,17 @@
 <fullyQualifiedTypeName name="utils.StringUtils"/>
 <fullyQualifiedTypeName name="Dao.xulyDL.BuildingxulyDL"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="Controller.BuildingController"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="DaoBuildingData.BuildingData"/>
-<fullyQualifiedTypeName name="Model.BuildingModel"/>
 <fullyQualifiedTypeName name="java.util.jar.Attributes.Name"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="constant.SystemConstant"/>
 <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="untils.buildingTypes"/>
+<fullyQualifiedTypeName name="Model.BuildingModel"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="untils.isNullorEmpty"/>
 </qualifiedTypeNameHistroy>

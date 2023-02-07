@@ -9,6 +9,7 @@ import untils.buildingTypes;
 
 public class SystemConstant {
 
+	//C1
 	public final static String tangtretCode = "tang-tret";
 	public final static String tangtretName = "tầng trệt";
 	public final static String nguyencanCode = "nguyen-can";
@@ -16,6 +17,8 @@ public class SystemConstant {
 	public final static String noithatCode = "noi-that";
 	public final static String noithatName = "nội thất";
 	
+	
+	//C2
 	public final static Map<String, String> building_types;
 	static {
 		Map<String, String> m1 = new HashMap<String, String>();

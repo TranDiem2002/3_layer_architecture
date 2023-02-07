@@ -12,8 +12,10 @@ public class BuildingListViewSearch {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Nhap ten toa nha: ");
 		String name = input.nextLine();
+		System.out.print("Nhap so tang ham: ");
+		int sotang = input.nextInt();
 		BuildingController buildingController = new BuildingController();
-		List<BuildingModel> buildingModels = buildingController.findSearch(name);
+		List<BuildingModel> buildingModels = buildingController.findSearch(name,sotang);
 		for (BuildingModel buildingModel : buildingModels) {
 			System.out.println("Tên tòa nhà: "+buildingModel.getName());
 			System.out.println("Số lượng tầng hầm: "+ buildingModel.getNumberofbasement());
