@@ -20,7 +20,7 @@ public class BuildingDaoimpl implements BuildingDao {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		getConnection conn = new getConnection();
-		List<BuildingEntity> buildingDatas= new ArrayList<>();
+		List<BuildingEntity> buildingDatas = new ArrayList<>();
 		try {
 			connection = conn.getconnection();
 			String query = "select * from building";
@@ -42,15 +42,7 @@ public class BuildingDaoimpl implements BuildingDao {
 		} finally {
 			try {
 				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			try {
 				preparedStatement.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			try {
 				resultSet.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -69,12 +61,12 @@ public class BuildingDaoimpl implements BuildingDao {
 		List<BuildingEntity> buildingDatas = new ArrayList<>();
 		try {
 			connection = conn.getconnection();
-			StringBuilder query = new StringBuilder( "select * from building where 1= 1 ");
-			if(!isNullorEmpty.check(building.getName())) {
-				query.append("and names like'%"+building.getName()+"%'");
+			StringBuilder query = new StringBuilder("select * from building where 1= 1 ");
+			if (!isNullorEmpty.check(building.getName())) {
+				query.append("and names like'%" + building.getName() + "%'");
 			}
-			if(building.getNumberofbasement() != null) {
-				query.append("and numberofbasement = "+building.getNumberofbasement()+"");
+			if (building.getNumberofbasement() != null) {
+				query.append("and numberofbasement = " + building.getNumberofbasement() + "");
 			}
 			System.out.println(query);
 			preparedStatement = connection.prepareStatement(query.toString());
@@ -95,15 +87,7 @@ public class BuildingDaoimpl implements BuildingDao {
 		} finally {
 			try {
 				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			try {
 				preparedStatement.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			try {
 				resultSet.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
