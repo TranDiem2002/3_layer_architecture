@@ -49,7 +49,7 @@ public class BuildingDaoimpl implements BuildingDao {
 			}
 		}
 
-		return buildingDatas;
+		return new ArrayList<>();
 	}
 
 	@Override
@@ -94,7 +94,7 @@ public class BuildingDaoimpl implements BuildingDao {
 			}
 		}
 
-		return buildingDatas;
+		return new ArrayList<>();
 	}
 
 }
