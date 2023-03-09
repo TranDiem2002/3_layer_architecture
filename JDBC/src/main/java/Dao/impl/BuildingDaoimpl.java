@@ -62,14 +62,18 @@ public class BuildingDaoimpl implements BuildingDao {
 		try {
 			connection = conn.getconnection();
 			StringBuilder query = new StringBuilder("select * from building where 1= 1 ");
-			if (!isNullorEmpty.check(building.getName())) {
-				query.append("and names like'%" + building.getName() + "%'");
+			if (isNullorEmpty.check(building.getName())) {
+				//query.append("and names like'%" + building.getName() + "%'");
+				query.append("and names like ?");
 			}
 			if (building.getNumberofbasement() != null) {
-				query.append("and numberofbasement = " + building.getNumberofbasement() + "");
+				//query.append("and numberofbasement = " + building.getNumberofbasement() + "");
+				query.append("and numberofbasement = ?");
 			}
 			System.out.println(query);
 			preparedStatement = connection.prepareStatement(query.toString());
+			preparedStatement.setString(1, "'%" + building.getName() + "%'");
+			preparedStatement.setInt(2, building.getNumberofbasement());
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				BuildingEntity buildingData = new BuildingEntity();
