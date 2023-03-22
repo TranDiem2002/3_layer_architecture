@@ -8,10 +8,9 @@ public class getConnection {
 	public static Connection getconnection() {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			String connectionUrl = "jdbc:sqlserver://localhost;database=AdventureWorks;integratedSecurity=true;";
 			String hostname = "localhost";
 			String sqlInstanceName = "LAPTOP-9KTILM0J\\SQLEXPRESS";
-			String sqlDatabaseName = " javasql";
+			String sqlDatabaseName = "estatebasic";
 			String sqlUser = "sa";
 			String sqlPassword = "01022002";
 

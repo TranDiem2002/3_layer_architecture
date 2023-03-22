@@ -48,3 +48,20 @@ public class buildingTypes {
 	}
 
 }
+
+
+
+//C3: 
+/*
+ * List<String> typesBuilding = new ArrayList<> ();
+ * String[] types = type.split(",");
+ * int n = types.length();
+ * for(int i=0; i< n ; i++){
+ *  String name = SystemConstrant.building_types.get(types[i])
+ *  typesBuilding.add(name);
+	 // su dung enum:
+	  * typesBuilding.add(BuildingEnum.valueOf(types[i].getTypesName()));
+ * }
+ * return String.join(",",typesBuilding)
+ * 
+ */

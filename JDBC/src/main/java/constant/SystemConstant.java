@@ -27,5 +27,7 @@ public class SystemConstant {
 		m1.put("noi-that","nội thất");
 		building_types = Collections.unmodifiableMap(m1);
 	}
+	
+	
 
 }

@@ -1,16 +1,40 @@
-package Model;
+package repository.entity;
 
-public class BuildingModel {
+import repository.annotation.Column;
+import repository.annotation.Entity;
+import repository.annotation.Table;
 
+@Entity  // chuyển class buildingEntity thành class đặc biệt giống như building dưới data
+@Table(name = "building")  // tên tương ứng với bảng dưới database
+public class BuildingEntity {
+	
+	@Column(name = "name")
 	private String name;
+	
+	@Column(name = "numberofbasement")
 	private Integer numberofbasement;
-	private String street;
-	private long districtid;
-	private String ward;
-	private String district;
-	private String direction;
+	
+	@Column(name = "floorarea")
 	private Integer floorarea;
+	
+	@Column(name = "street")
+	private String street;
+	
+	@Column(name = "districtid")
+	private Long districtid;
+	
+	@Column(name = "ward")
+	private String ward;
+	
+	@Column(name = "direction")
+	private String direction;
+	
+	
+	@Column(name = "level")
 	private Integer level;
+	
+	
+	@Column(name = "types")
 	private String types;
 	
 	public String getName() {
@@ -29,7 +53,7 @@ public class BuildingModel {
 		this.numberofbasement = numberofbasement;
 	}
 
-	public Integer getfloorarea() {
+	public Integer getFloorarea() {
 		return floorarea;
 	}
 
@@ -45,7 +69,6 @@ public class BuildingModel {
 		this.street = street;
 	}
 
-	
 
 	public String getTypes() {
 		return types;
@@ -59,24 +82,16 @@ public class BuildingModel {
 		return districtid;
 	}
 
-	public void setDistrictid(long districtid) {
-		this.districtid = districtid;
-	}
-
-	public String getDistrict() {
-		return district;
-	}
-
-	public void setDistrict(String district) {
-		this.district = district;
+	public void setDistrictid(Long district) {
+		this.districtid = district;
 	}
 
 	public String getward() {
 		return ward;
 	}
 
-	public void setward (String ward) {
-		this.ward =  ward;
+	public void setward(String ward) {
+		this.ward = ward;
 	}
 
 	public String getDirection() {
@@ -95,6 +110,7 @@ public class BuildingModel {
 	public void setLevel(Integer level) {
 		this.level = level;
 	}
+	
 	
 	
 }

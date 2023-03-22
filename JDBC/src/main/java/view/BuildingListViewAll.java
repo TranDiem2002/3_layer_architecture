@@ -15,7 +15,7 @@ public class BuildingListViewAll {
 		for (BuildingModel buildingModel : buildingModels) {
 			System.out.println("Tên tòa nhà: "+buildingModel.getName());
 			System.out.println("Số lượng tầng hầm: "+ buildingModel.getNumberofbasement());
-			System.out.println("Diện tích sàn: "+buildingModel.getFloorerea());
+			System.out.println("Diện tích sàn: "+buildingModel.getfloorarea());
 			System.out.println("Loại tòa nhà: "+buildingModel.getTypes());
 			System.out.println("----------------------------------------------------------");
 		}

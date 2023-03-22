@@ -19,10 +19,18 @@ public class BuildingController {
 		return buildingModels;
 	}
 	
-	public List< BuildingModel> findSearch(String name,int sotang) {
+	public List< BuildingModel> findSearch(String name,Integer floorArea,Long districtid, 
+			String street, Integer numberofbasement, String direction, Integer level,String ward) {
+	
 		BuildingModel building = new BuildingModel();
 		building.setName(name);
-		building.setNumberofbasement(sotang);
+		building.setFloorarea(floorArea);
+		building.setDistrictid(districtid);
+		building.setStreet(street);
+		building.setNumberofbasement(numberofbasement);
+		building.setDirection(direction);
+		building.setLevel(level);
+		building.setward(ward);
 		List<BuildingModel> buildingModels = buildingService.findSearch(building);
 		return buildingModels;
 	}
