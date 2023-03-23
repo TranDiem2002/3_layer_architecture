@@ -25,7 +25,7 @@ public class DistrictRepositoryImpl implements DistrictRepository {
 			resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
 					nameWard = resultSet.getString("name");
-					System.out.println(nameWard);
+					//System.out.println(nameWard);
 			}
 			return nameWard;
 		} catch (SQLException e) {

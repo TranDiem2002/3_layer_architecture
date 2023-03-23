@@ -8,6 +8,9 @@ import repository.annotation.Table;
 @Table(name = "building")  // tên tương ứng với bảng dưới database
 public class BuildingEntity {
 	
+	@Column(name="id")
+	private Long id;
+	
 	@Column(name = "name")
 	private String name;
 	
@@ -33,9 +36,6 @@ public class BuildingEntity {
 	@Column(name = "level")
 	private Integer level;
 	
-	
-	@Column(name = "types")
-	private String types;
 	
 	public String getName() {
 		return name;
@@ -69,15 +69,6 @@ public class BuildingEntity {
 		this.street = street;
 	}
 
-
-	public String getTypes() {
-		return types;
-	}
-
-	public void setTypes(String types) {
-		this.types = types;
-	}
-
 	public Long getDistrictid() {
 		return districtid;
 	}
@@ -109,6 +100,14 @@ public class BuildingEntity {
 
 	public void setLevel(Integer level) {
 		this.level = level;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

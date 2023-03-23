@@ -30,7 +30,13 @@ public class BuildingRepositoryimpl extends SimpleRepository<BuildingEntity> imp
 		try {
 			connection = conn.getconnection();
 			StringBuilder query = new StringBuilder("select * from building where 1= 1 ");
-			if (isNullorEmpty.check(building.getName())) {
+//			if(idBuilding.size()>0) {
+//				query.append(" and id = "+idBuilding.get(0));
+//				for(int i = 1; i< idBuilding.size(); i++) {
+//					query.append(" and id = "+idBuilding.get(i));
+//				}
+//			}
+			if (!isNullorEmpty.check(building.getName())) {
 				query.append(" and name like'%" + building.getName() + "%'");
 			}
 			if (building.getfloorarea() != null) {
@@ -39,22 +45,22 @@ public class BuildingRepositoryimpl extends SimpleRepository<BuildingEntity> imp
 			if(building.getDistrictid() != null) {
 				query.append(" and districtid = "+ building.getDistrictid());
 			}
-			if (isNullorEmpty.check(building.getward())) {
+			if (!isNullorEmpty.check(building.getward())) {
 				query.append(" and ward like N'%" + building.getward() + "%'");
 			}
-			if(isNullorEmpty.check(building.getStreet())) {
+			if(!isNullorEmpty.check(building.getStreet())) {
 				query.append(" and street like N'%"+ building.getStreet() +"%'");
 			}
 			if (building.getNumberofbasement() != null) {
 				 query.append(" and numberofbasement = " + building.getNumberofbasement());
 			}
-			if(isNullorEmpty.check(building.getDirection())) {
+			if(!isNullorEmpty.check(building.getDirection())) {
 				query.append(" and direction like N'%"+ building.getDirection() +"%'");
 			}
 			if (building.getLevel() != null) {
 				 query.append(" and level = " + building.getLevel());
 			}
-			//System.out.println(query);
+			System.out.println(query);
 			stmt = connection.prepareStatement(query.toString());
 			resultSet = stmt.executeQuery();
 			ResultSetMetaData resultSetMetaData =resultSet.getMetaData();

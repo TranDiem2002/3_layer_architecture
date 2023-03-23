@@ -31,6 +31,7 @@ public class BuildingController {
 		building.setDirection(direction);
 		building.setLevel(level);
 		building.setward(ward);
+		//building.setTypes(types);
 		List<BuildingModel> buildingModels = buildingService.findSearch(building);
 		return buildingModels;
 	}

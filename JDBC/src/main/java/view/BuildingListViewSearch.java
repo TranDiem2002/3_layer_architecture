@@ -26,7 +26,13 @@ public class BuildingListViewSearch {
 		System.out.println("Nhập hướng: ");
 		String huong =scanner.nextLine();
 		BuildingController buildingController = new BuildingController();
-		List<BuildingModel> buildingModels = buildingController.findSearch(name,dientichsan,quan,duong,sotang, huong,null,phuong);
+
+		
+		//List<BuildingModel> buildingModels = buildingController.findSearch(name,dientichsan,quan,duong,sotang,huong,null,phuong);
+		
+		List<BuildingModel> buildingModels = buildingController.findSearch("tòa nhà",null,null,null,null,null,null,null);
+		
+		//List<BuildingModel> buildingModels = buildingController.findSearch(null,null,null,null,null,null,null,null, loaitoanha);
 		for (BuildingModel buildingModel : buildingModels) {
 			System.out.println("Tên tòa nhà: "+buildingModel.getName());
 			System.out.println("Số lượng tầng hầm: "+ buildingModel.getNumberofbasement());
