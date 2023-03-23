@@ -7706,3 +7706,8 @@ Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2023-03-24 00:02:09.409
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.core.resources 2 2 2023-03-24 00:06:39.445
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2023-03-24 00:06:39.445
+!MESSAGE The project description file (.project) for '3_layer_architecture' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
