@@ -1,9 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/main/java/Enums/BuildingEnums.java=UTF-8
 encoding//src/main/java/constant/SystemConstant.java=UTF-8
-encoding//src/main/java/repository/annotation/Entity.java=UTF-8
-encoding//src/main/java/repository/entity/BuildingEntity.java=UTF-8
-encoding//src/main/java/repository/impl/SimpleRepository.java=UTF-8
 encoding//src/main/java/untils/buildingTypes.java=UTF-8
-encoding//src/main/java/view/BuildingListViewAll.java=UTF-8
 encoding//src/main/java/view/BuildingListViewSearch.java=UTF-8

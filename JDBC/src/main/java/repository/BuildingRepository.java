@@ -2,10 +2,10 @@ package repository;
 
 import java.util.List;
 
-import Model.BuildingModel;
-import repository.entity.BuildingEntity;
+import Model.BuildingRequest.BuildingRequest;
+import repository.entity.Building_entity;
 
-public interface BuildingRepository  extends JpaRepository<BuildingEntity>{
+public interface BuildingRepository {
 
-	List<BuildingEntity> findSearch(BuildingModel building);
+	List<Building_entity> findSearch(BuildingRequest building);
 }

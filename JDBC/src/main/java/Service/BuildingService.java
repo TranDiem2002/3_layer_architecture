@@ -2,11 +2,11 @@ package Service;
 
 import java.util.List;
 
-import Model.BuildingModel;
+import Model.BuildingReponse.BuildingReponse;
+import Model.BuildingRequest.BuildingRequest;
 
 
 public interface BuildingService {
 
-	List<BuildingModel> findAll();
-	List<BuildingModel> findSearch(BuildingModel buildingModel);
+	List<BuildingReponse> findSearch(BuildingRequest building);
 }
