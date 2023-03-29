@@ -29,7 +29,7 @@ public class BuildingServiceimpl implements BuildingService {
 			BuildingReponse buildingReponse2 = new BuildingReponse();
 			buildingReponse2.setId(building_entity.getId());
 			buildingReponse2.setName(building_entity.getName());
-			buildingReponse2.setAddress(building_entity.getStreet()+", "+ building_entity.getWard()+", "+building_entity.getDistrictName());
+			buildingReponse2.setAddress(building_entity.getStreet()+", "+building_entity.getWard() +", "+building_entity.getDistrictName());
 			buildingReponse2.setRentprice(building_entity.getRentprice());
 			buildingReponse2.setServicefree(building_entity.getServicefee());
 			buildingReponse2.setBrokeragefree(building_entity.getBrokeragefee());

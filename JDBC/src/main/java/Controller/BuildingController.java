@@ -16,18 +16,22 @@ public class BuildingController {
 	}
 	
 	public List< BuildingReponse> findSearch(String name,Integer floorArea,Long districtid, 
-			String street, Integer numberofbasement, String direction, Integer level,String ward, String types, String rentArea) {
+			String street, Integer numberofbasement, String direction, String level,String ward, String types, String rentArea,
+			String manager, Integer staff ) {
 	
 	BuildingRequest building = new BuildingRequest();
 		building.setName(name);
 		building.setFloorarea(floorArea);
 		building.setDistrictid(districtid);
+		building.setWard(ward);
 		building.setStreet(street);
 		building.setNumberofbasement(numberofbasement);
 		building.setDirection(direction);
 		building.setTypes(types);
+		building.setStaff(staff);
+		building.setLevel(level);
 		building.setRentarea(rentArea);
-		//building.setTypes(types);
+		building.setManager(manager);
 		List<BuildingReponse> buildingModels = buildingService.findSearch(building);
 		return buildingModels;
 	}

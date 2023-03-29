@@ -12,6 +12,8 @@ public class BuildingRequest {
 	private String rentarea;
 	private String renytprice;
 	private String types;
+	private String manager;
+	private Integer staff;
 	public String getName() {
 		return name;
 	}
@@ -79,5 +81,19 @@ public class BuildingRequest {
 	public void setTypes(String types) {
 		this.types = types;
 	}
+	public String getManager() {
+		return manager;
+	}
+	public void setManager(String manager) {
+		this.manager = manager;
+	}
+	public Integer getStaff() {
+		return staff;
+	}
+	public void setStaff(Integer staff) {
+		this.staff = staff;
+	}
+
+	
 	
 }
