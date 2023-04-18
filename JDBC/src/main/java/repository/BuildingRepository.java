@@ -3,9 +3,11 @@ package repository;
 import java.util.List;
 
 import Model.BuildingRequest.BuildingRequest;
-import repository.entity.Building_entity;
+import repository.entity.DistrictEntity;
+import repository.entity.buildingEntity;
 
 public interface BuildingRepository {
 
-	List<Building_entity> findSearch(BuildingRequest building);
+	List<buildingEntity> findSearch(BuildingRequest building);
+	List<DistrictEntity> nameDistrict ();
 }

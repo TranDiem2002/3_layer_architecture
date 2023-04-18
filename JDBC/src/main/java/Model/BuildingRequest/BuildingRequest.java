@@ -1,5 +1,7 @@
 package Model.BuildingRequest;
 
+import java.util.List;
+
 public class BuildingRequest {
 	private String name;
 	private Integer floorarea;
@@ -11,7 +13,7 @@ public class BuildingRequest {
 	private String direction;
 	private String rentarea;
 	private String renytprice;
-	private String types;
+	private List<String> types;
 	private String manager;
 	private Integer staff;
 	public String getName() {
@@ -75,10 +77,11 @@ public class BuildingRequest {
 	public void setRenytprice(String renytprice) {
 		this.renytprice = renytprice;
 	}
-	public String getTypes() {
+
+	public List<String> getTypes() {
 		return types;
 	}
-	public void setTypes(String types) {
+	public void setTypes(List<String> types) {
 		this.types = types;
 	}
 	public String getManager() {

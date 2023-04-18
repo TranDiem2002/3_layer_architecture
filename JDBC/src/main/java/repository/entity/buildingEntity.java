@@ -2,7 +2,7 @@ package repository.entity;
 
 import java.sql.Date;
 
-public class Building_entity {
+public class buildingEntity {
 	private Long id;
 	private String name;
 	private String street;
@@ -29,7 +29,6 @@ public class Building_entity {
 	private Date modifieddate;
 	private String createdby;
 	private String modifiedby;
-	private String districtName;
 	public Long getId() {
 		return id;
 	}
@@ -185,12 +184,6 @@ public class Building_entity {
 	}
 	public void setModifiedby(String modifiedby) {
 		this.modifiedby = modifiedby;
-	}
-	public String getDistrictName() {
-		return districtName;
-	}
-	public void setDistrictName(String districtName) {
-		this.districtName = districtName;
 	}
 
 	
