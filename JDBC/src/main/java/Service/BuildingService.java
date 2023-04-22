@@ -1,12 +1,12 @@
 package Service;
 
 import java.util.List;
+import java.util.Map;
 
 import Model.BuildingReponse.BuildingReponse;
-import Model.BuildingRequest.BuildingRequest;
 
 
 public interface BuildingService {
 
-	List<BuildingReponse> findSearch(BuildingRequest building);
+	List<BuildingReponse> findSearch(Map<String, Object> map, List<String> types);
 }

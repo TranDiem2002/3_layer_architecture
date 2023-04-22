@@ -6,10 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import Model.BuildingRequest.BuildingRequest;
 import repository.BuildingRepository;
-import repository.entity.DistrictEntity;
 import repository.entity.buildingEntity;
 import untils.getConnection;
 import untils.isNullorEmpty;
@@ -21,132 +23,82 @@ public class BuildingRepositoryimpl implements BuildingRepository {
 	ResultSet resultSet = null;
 	getConnection conn = new getConnection();
 
-	public List<Long> buildingTypes(BuildingRequest building) {
-		List<Long> idBuilding = new ArrayList<>();
-		try {
-			connection = conn.getconnection();
-			StringBuilder query = new StringBuilder("select buildingid from buildingrenttype");
-			query.append(" join renttype on renttype.id = buildingrenttype.renttypeid where ");
-			for (int i = 0; i < building.getTypes().size(); i++) {
+	public void buildingJoin(Map<String, Object> map, List<String> types, StringBuilder query) {
+
+		if (types.size() > 0) {
+			query.append(
+					" join (select renttype.id,name,buildingid,renttypeid from renttype join buildingrenttype on renttypeid = renttype.id where 1 =1 ");
+			for (int i = 0; i < types.size(); i++) {
+				if (i == 0) {
+					query.append(" and ");
+				}
 				if (i > 0) {
 					query.append(" or ");
 				}
-				query.append("code like '" + building.getTypes().get(i) + "'");
+				query.append("  code like '%" + types.get(i) + "%' ");
 			}
-			preparedStatement = connection.prepareStatement(query.toString());
-			resultSet = preparedStatement.executeQuery();
-			while (resultSet.next()) {
-				idBuilding.add(resultSet.getLong("buildingid"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+			query.append(" )as type on building.id = type.buildingid ");
 		}
-
-		return idBuilding;
-	}
-
-	public List<DistrictEntity> nameDistrict() {
-		List<DistrictEntity> districts = new ArrayList<>();
-		try {
-			StringBuilder query = new StringBuilder("select *from district ");
-			connection = conn.getconnection();
-			preparedStatement = connection.prepareStatement(query.toString());
-			resultSet = preparedStatement.executeQuery();
-			while (resultSet.next()) {
-				DistrictEntity district = new DistrictEntity();
-				district.setIdDistrict(resultSet.getLong("idDistrict"));
-				district.setCode(resultSet.getString("code"));
-				district.setNameDistrict(resultSet.getString("nameDistrict"));
-				districts.add(district);
-			}
-			return districts;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return new ArrayList<>();
-	}
-
-	public void buildingJoin(BuildingRequest building, StringBuilder query) {
-		if (isNullorEmpty.check(building.getManager())) {
+		if (isNullorEmpty.check(map.get("manager").toString())) {
 			query.append(" join (select buildingid from assignmentbuilding where ");
-			query.append("staffid = (select id from users where username like '%" + building.getManager() + "%')) as buildingM");
+			query.append("staffid = (select id from users where username like '%" + map.get("manager")
+					+ "%')) as buildingM");
 			query.append(" on buildingM.buildingid = building.id");
 		}
-		if(!isNullorEmpty.checkInt(building.getStaff())) {
+		if (!isNullorEmpty.checkInt(Integer.parseInt(map.get("staff").toString()))) {
 			query.append(" join (select buildingid from assignmentbuilding where ");
-			query.append(" staffid = "+building.getStaff()+") as buildingS on building.id = buildingS.buildingid");
+			query.append(" staffid = " + map.get("staff") + ") as buildingS on building.id = buildingS.buildingid");
 		}
-
 	}
 
-	public void buildingNoJoin(BuildingRequest building, List<Long> idBuilding, StringBuilder query) {
-		if (idBuilding.size() > 0) {
-			query.append(" and ");
-			for (int i = 0; i < idBuilding.size(); i++) {
-				if (i > 0) {
-					query.append(" or ");
+	public void buildingNoJoin(Map<String, Object> map, List<String> types, StringBuilder query) {
+		Set set = map.keySet();
+		for (Object key : set) {
+			if (key.equals("name") || key.equals("ward")|| key.equals("street")  || key.equals("level") || key.equals( "direction")
+					|| key.equals("manager")) {
+				if (isNullorEmpty.check(map.get(key).toString())) {
+					query.append(" and building." + key + " like '%" + map.get(key) + "%'");
 				}
-				query.append(" id = " + idBuilding.get(i));
+				if (key.equals("floorarea") || key.equals("numberofbasement")) {
+					if (!isNullorEmpty.checkInt(Integer.parseInt(map.get(key).toString()))) {
+						query.append(" and " + key + " =" + map.get(key));
+					}
+				}
+				if (key.equals("idDistrict")) {
+					if (!isNullorEmpty.checkInt(Integer.parseInt(map.get(key).toString()))) {
+						query.append(" and districtid =" + map.get(key));
+					}
+				}
 			}
 		}
-		if (isNullorEmpty.check(building.getName())) {
-			query.append(" and name like'%" + building.getName() + "%'");
-		}
-		if (!isNullorEmpty.checkInt(building.getFloorarea())) {
-			query.append(" and floorarea = " + building.getFloorarea());
-		}
-		if (isNullorEmpty.check(building.getWard())) {
-			query.append(" and ward like N'%" + building.getWard() + "%'");
-		}
-		if (!isNullorEmpty.checkInt(Integer.parseInt(building.getDistrictid().toString()))) {
-			query.append(" and districtid = " + building.getDistrictid());
-		}
-		if (isNullorEmpty.check(building.getStreet())) {
-			query.append(" and street like N'%" + building.getStreet() + "%'");
-		}
-		if (!isNullorEmpty.checkInt(building.getNumberofbasement())) {
-			query.append(" and numberofbasement = " + building.getNumberofbasement());
-		}
-		if (isNullorEmpty.check(building.getDirection())) {
-			query.append(" and direction like N'%" + building.getDirection() + "%'");
-		}
-		if (isNullorEmpty.check(building.getLevel())) {
-			query.append(" and level = " + building.getLevel());
-		}
-
 	}
 
-	public List<buildingEntity> findSearch(BuildingRequest building) {
-		List<buildingEntity> building_entities = new ArrayList<>();
-		List<Long> idBuilding = new ArrayList<>();
-		StringBuilder querySearch = new StringBuilder("select * from building");
+	@Override
+	public List<buildingEntity> findSearch(Map<String, Object> map, List<String> types) {
+		List<buildingEntity> buildingEntities = new ArrayList<>();
+		StringBuilder querySearch = new StringBuilder("select * from building ");
 		try {
 			connection = conn.getconnection();
-			querySearch.append(" join district on building.districtid = district.idDistrict");
-			buildingJoin(building, querySearch);
-			//System.out.println(querySearch);
-			if (building.getTypes().size() > 0) {
-				idBuilding = buildingTypes(building);
-			}
-			querySearch.append(" where 1=1");
-			buildingNoJoin(building, idBuilding, querySearch);
+			buildingJoin(map, types, querySearch);
+			querySearch.append(" where 1=1 ");
+			buildingNoJoin(map, types, querySearch);
 			//System.out.println(querySearch);
 			preparedStatement = connection.prepareStatement(querySearch.toString());
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				buildingEntity building_entity = new buildingEntity();
-				building_entity.setId(resultSet.getLong("id"));
-				building_entity.setName(resultSet.getString("name"));
-				building_entity.setStreet(resultSet.getString("street"));
-				building_entity.setWard(resultSet.getString("ward"));
-				building_entity.setDistrictid(resultSet.getLong("districtid"));
-				building_entity.setRentprice(resultSet.getInt("rentprice"));
-				building_entity.setServicefee(resultSet.getString("servicefee"));
-				building_entity.setBrokeragefee(resultSet.getString("brokeragefee"));
-				building_entity.setNumberofbasement(resultSet.getInt("numberofbasement"));
-				building_entities.add(building_entity);
+				buildingEntity buildingEntity = new buildingEntity();
+				buildingEntity.setId(resultSet.getLong("id"));
+				buildingEntity.setName(resultSet.getString("name"));
+				buildingEntity.setStreet(resultSet.getString("street"));
+				buildingEntity.setWard(resultSet.getString("ward"));
+				buildingEntity.setDistrictid(resultSet.getLong("districtid"));
+				buildingEntity.setRentprice(resultSet.getInt("rentprice"));
+				buildingEntity.setServicefee(resultSet.getString("servicefee"));
+				buildingEntity.setBrokeragefee(resultSet.getString("brokeragefee"));
+				buildingEntity.setNumberofbasement(resultSet.getInt("numberofbasement"));
+				buildingEntities.add(buildingEntity);
 			}
-			return building_entities;
+			return buildingEntities;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

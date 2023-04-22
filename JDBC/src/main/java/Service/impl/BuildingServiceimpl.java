@@ -1,52 +1,51 @@
 package Service.impl;
 
+import java.nio.channels.ScatteringByteChannel;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import Model.BuildingReponse.BuildingReponse;
 import Model.BuildingRequest.BuildingRequest;
 import Service.BuildingService;
 import repository.BuildingRepository;
-import repository.entity.DistrictEntity;
+import repository.DistrictRepository;
+import repository.entity.districtEntity;
 import repository.entity.buildingEntity;
 import repository.impl.BuildingRepositoryimpl;
-
-
+import repository.impl.DistrictRepositoryimpl;
+import untils.isNullorEmpty;
 
 public class BuildingServiceimpl implements BuildingService {
 	private BuildingRepository buildingReposiroty;
-	
-	
+	private DistrictRepository districtRepository;
+
 	public BuildingServiceimpl() {
 		buildingReposiroty = new BuildingRepositoryimpl();
-		
+		districtRepository = new DistrictRepositoryimpl();
 	}
 	
+
 	@Override
-	public List<BuildingReponse> findSearch(BuildingRequest building) {
-		List<BuildingReponse> buildingReponses = new ArrayList<>();
-		List<buildingEntity> building_entities = buildingReposiroty.findSearch(building);
-		List<DistrictEntity> districtEntities = buildingReposiroty.nameDistrict();
-		for(buildingEntity building_entity: building_entities) {
-			BuildingReponse buildingReponse2 = new BuildingReponse();
-			buildingReponse2.setId(building_entity.getId());
-			buildingReponse2.setName(building_entity.getName());
-			for(DistrictEntity district : districtEntities) {
-				if(building_entity.getDistrictid() == district.getIdDistrict()) {
-					buildingReponse2.setAddress(building_entity.getStreet() +", "+ building_entity.getWard()+ ", " + district.getNameDistrict());
-				}
-			}
-			buildingReponse2.setRentprice(building_entity.getRentprice());
-			buildingReponse2.setServicefree(building_entity.getServicefee());
-			buildingReponse2.setBrokeragefree(building_entity.getBrokeragefee());
-			buildingReponse2.setNumberofbasement(building_entity.getNumberofbasement());
-			buildingReponses.add(buildingReponse2);
+	public List<BuildingReponse> findSearch(Map<String, Object> map, List<String> types) {
+		List<buildingEntity> building = new ArrayList<>();
+		List<BuildingReponse> buildings = new ArrayList<>();
+		building = buildingReposiroty.findSearch(map, types);
+		for (buildingEntity b : building) {
+			BuildingReponse buildingReponse = new BuildingReponse();
+			buildingReponse.setId(b.getId());
+			buildingReponse.setName(b.getName());
+			districtEntity district = districtRepository.findDistrictID(b.getDistrictid());
+			buildingReponse.setAddress(b.getStreet() +", "+b.getWard()+", "+district.getNameDistrict());
+			buildingReponse.setFloorarea(b.getFloorarea());
+			buildingReponse.setRentprice(b.getRentprice());
+			buildingReponse.setServicefree(b.getServicefee());
+			buildingReponse.setBrokeragefree(b.getBrokeragefee());
+			buildingReponse.setNumberofbasement(b.getNumberofbasement());
+			buildings.add(buildingReponse);
 		}
 
-		return buildingReponses;
+		return buildings;
 	}
-	
-	
-
 
 }

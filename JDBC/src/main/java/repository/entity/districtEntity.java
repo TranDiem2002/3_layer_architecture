@@ -1,12 +1,12 @@
 package repository.entity;
 
-public class DistrictEntity {
+public class districtEntity {
 
 	private Long idDistrict;
 	private String code;
 	private String nameDistrict;
 	
-	public DistrictEntity() {
+	public districtEntity() {
 		
 	}
 	

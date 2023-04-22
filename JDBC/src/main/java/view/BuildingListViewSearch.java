@@ -12,51 +12,28 @@ import Controller.BuildingController;
 import Model.BuildingReponse.BuildingReponse;
 
 public class BuildingListViewSearch {
+	
+	public static void input(Map<String, Object> map, List<String> types) {
+		map.put("name", "Building");
+		map.put("floorarea", null);
+		map.put("idDistrict", null );
+		map.put("ward", "");
+		map.put("street", "");
+		map.put("numberofbasement", null);
+		map.put("level", "");
+		map.put("direction", "");
+		map.put("rentarea", null);
+		map.put("rentprice",null);
+		map.put("manager", "");
+		map.put("staff",null);
+		types.add("tang-tret");
+		
+	}
 
 	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
-		Scanner scanner = new Scanner(System.in);
-		Scanner sc = new Scanner(System.in);
-		Scanner sc1 = new Scanner(System.in);
-		Map<String, String> map = new HashMap<>();
-		System.out.println("Tên tòa nhà: ");
-		String name = input.nextLine();
-		map.put("name", name);
-		System.out.println("Diện tích sàn: ");
-		int dientichsan = input.nextInt();
-		map.put("floorarea", String.valueOf(dientichsan));
-		System.out.println("Quận: ");
-		Long quan = input.nextLong();
-		map.put("districtid", String.valueOf(quan));
-		System.out.println("Phường: ");
-		String phuong = scanner.nextLine();
-		map.put("ward", phuong);
-		System.out.println("Đường: ");
-		String duong = scanner.nextLine();
-		map.put("street", duong);
-		System.out.println("số tầng hầm: ");
-		int sotang = scanner.nextInt();
-		map.put("numberofbasement", String.valueOf(sotang));
-		System.out.println("Nhập hướng: ");
-		String huong = sc1.nextLine();
-		map.put("direction", huong);
-		System.out.println("Nhập hạng: ");
-		String hang = sc1.nextLine();
-		map.put("level", hang);
-		System.out.println(" nhap dien tich thue: ");
-		String dientich = sc.nextLine();
-		map.put("rentarea", dientich);
-		System.out.println("Nhập tên quản lý");
-		String quanly = sc1.nextLine();
-		map.put("manager", quanly);
-		System.out.println("Nhập mã nhân viên: ");
-		Integer maNV = sc1.nextInt();
-		map.put("staff", String.valueOf(maNV));
-		List<String> loaitoanha = new ArrayList<String>();
-		loaitoanha.add("tang-tret");
-		
-		
-		
+		Map<String, Object> map = new HashMap<>();
+		List<String> loaitoanha = new ArrayList<String>();	
+		input(map, loaitoanha);
 		BuildingController buildingController = new BuildingController();
 		List<BuildingReponse> buildingReponses = buildingController.findSearch(map, loaitoanha);
 		for (BuildingReponse building : buildingReponses) {

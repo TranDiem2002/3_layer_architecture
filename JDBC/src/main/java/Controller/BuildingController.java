@@ -16,22 +16,8 @@ public class BuildingController {
 		buildingService = new BuildingServiceimpl();
 	}
 	
-	public List< BuildingReponse> findSearch(Map<String, String> map, List<String> types) {
-	
-	BuildingRequest building = new BuildingRequest();
-		building.setName(map.get("name"));
-		building.setFloorarea(Integer.parseInt(map.get("floorarea")));
-		building.setDistrictid(Long.parseLong(map.get("districtid")));
-		building.setWard(map.get("ward"));
-		building.setStreet(map.get("street"));
-		building.setNumberofbasement(Integer.parseInt(map.get("numberofbasement")));
-		building.setDirection(map.get("direction"));
-		building.setTypes(types);
-		building.setStaff(Integer.parseInt(map.get("staff")));
-		building.setLevel(map.get("level"));
-		building.setRentarea(map.get("rentarea"));
-		building.setManager(map.get("manager"));
-		List<BuildingReponse> buildingModels = buildingService.findSearch(building);
+	public List< BuildingReponse> findSearch(Map<String, Object> map, List<String> types) {
+		List<BuildingReponse> buildingModels = buildingService.findSearch(map,types);
 		return buildingModels;
 	}
 }

@@ -122,4 +122,7 @@ public class BuildingReponse {
 	public void setRentarea(String rentarea) {
 		this.rentarea = rentarea;
 	}
+
+	
+	
 }
