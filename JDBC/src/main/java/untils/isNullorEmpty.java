@@ -10,7 +10,7 @@ public class isNullorEmpty {
 	}
 	
 	public static boolean checkInt(Integer value) {
-		if(value != null) {
+		if(value == null) {
 			return false;
 		}
 		return true;

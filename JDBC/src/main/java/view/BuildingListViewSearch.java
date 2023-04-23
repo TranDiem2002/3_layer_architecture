@@ -16,16 +16,18 @@ public class BuildingListViewSearch {
 	public static void input(Map<String, Object> map, List<String> types) {
 		map.put("name", "Building");
 		map.put("floorarea", null);
-		map.put("idDistrict", null );
+		map.put("idDistrict", 1 );
 		map.put("ward", "");
 		map.put("street", "");
-		map.put("numberofbasement", null);
+		map.put("numberofbasement", 2);
 		map.put("level", "");
 		map.put("direction", "");
-		map.put("rentarea", null);
-		map.put("rentprice",null);
 		map.put("manager", "");
 		map.put("staff",null);
+		map.put("rentPriceFrom", 12);
+		map.put("rentPriceTo", 20);
+		map.put("areaRentFrom", 12);
+		map.put("areaRentTo", null);
 		types.add("tang-tret");
 		
 	}

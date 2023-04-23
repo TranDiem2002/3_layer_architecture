@@ -45,44 +45,68 @@ public class BuildingRepositoryimpl implements BuildingRepository {
 					+ "%')) as buildingM");
 			query.append(" on buildingM.buildingid = building.id");
 		}
-		if (!isNullorEmpty.checkInt(Integer.parseInt(map.get("staff").toString()))) {
+		if (isNullorEmpty.check(map.get("staff").toString())) {
 			query.append(" join (select buildingid from assignmentbuilding where ");
 			query.append(" staffid = " + map.get("staff") + ") as buildingS on building.id = buildingS.buildingid");
 		}
+		query.append(" join rentarea on rentarea.buildingid = building.id ");
 	}
 
 	public void buildingNoJoin(Map<String, Object> map, List<String> types, StringBuilder query) {
 		Set set = map.keySet();
 		for (Object key : set) {
-			if (key.equals("name") || key.equals("ward")|| key.equals("street")  || key.equals("level") || key.equals( "direction")
-					|| key.equals("manager")) {
+			if (key.equals("name") || key.equals("ward") || key.equals("street") || key.equals("level")
+					|| key.equals("direction") || key.equals("manager")) {
 				if (isNullorEmpty.check(map.get(key).toString())) {
 					query.append(" and building." + key + " like '%" + map.get(key) + "%'");
 				}
-				if (key.equals("floorarea") || key.equals("numberofbasement")) {
-					if (!isNullorEmpty.checkInt(Integer.parseInt(map.get(key).toString()))) {
-						query.append(" and " + key + " =" + map.get(key));
-					}
-				}
-				if (key.equals("idDistrict")) {
-					if (!isNullorEmpty.checkInt(Integer.parseInt(map.get(key).toString()))) {
-						query.append(" and districtid =" + map.get(key));
-					}
+			}
+			if (key == "floorarea" || key == "numberofbasement") {
+				if (isNullorEmpty.check(map.get(key).toString())) {
+					query.append(" and " + key + " =" + map.get(key));
 				}
 			}
+			if (key == "idDistrict") {
+				if (isNullorEmpty.check(map.get(key).toString())) {
+					query.append(" and districtid =" + map.get(key));
+				}
+			}
+			if (key == "areaRentFrom") {
+				if (isNullorEmpty.check(map.get(key).toString())) {
+					query.append(" and value >= " + map.get(key));
+				}
+			}
+
+			if (key == "areaRentTo") {
+				if (isNullorEmpty.check(map.get(key).toString())) {
+					query.append(" and value <= " + map.get(key));
+				}
+			}
+			if (key == "rentPriceFrom") {
+				if (isNullorEmpty.check(map.get(key).toString())) {
+					query.append(" and rentprice >= " + map.get(key));
+				}
+			}
+			if (key == "rentPriceTo") {
+				if (isNullorEmpty.check(map.get(key).toString())) {
+					query.append(" and rentprice <= " + map.get(key));
+				}
+			}
+
 		}
 	}
 
 	@Override
 	public List<buildingEntity> findSearch(Map<String, Object> map, List<String> types) {
 		List<buildingEntity> buildingEntities = new ArrayList<>();
-		StringBuilder querySearch = new StringBuilder("select * from building ");
+		StringBuilder querySearch = new StringBuilder("select distinct building.id,building.name,street,ward,districtid,"
+				+ "numberofbasement,servicefee,brokeragefee,rentprice from building ");
 		try {
 			connection = conn.getconnection();
 			buildingJoin(map, types, querySearch);
-			querySearch.append(" where 1=1 ");
+			querySearch.append(" where 1=1");
 			buildingNoJoin(map, types, querySearch);
-			//System.out.println(querySearch);
+			System.out.println(querySearch);
 			preparedStatement = connection.prepareStatement(querySearch.toString());
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
