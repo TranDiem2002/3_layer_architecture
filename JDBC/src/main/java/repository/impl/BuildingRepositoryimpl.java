@@ -45,7 +45,7 @@ public class BuildingRepositoryimpl implements BuildingRepository {
 					+ "%')) as buildingM");
 			query.append(" on buildingM.buildingid = building.id");
 		}
-		if (isNullorEmpty.check(map.get("staff").toString())) {
+		if (isNullorEmpty.checkInput(map.get("staff"))) {
 			query.append(" join (select buildingid from assignmentbuilding where ");
 			query.append(" staffid = " + map.get("staff") + ") as buildingS on building.id = buildingS.buildingid");
 		}
@@ -62,33 +62,33 @@ public class BuildingRepositoryimpl implements BuildingRepository {
 				}
 			}
 			if (key == "floorarea" || key == "numberofbasement") {
-				if (isNullorEmpty.check(map.get(key).toString())) {
+				if (isNullorEmpty.checkInput(map.get(key))) {
 					query.append(" and " + key + " =" + map.get(key));
 				}
 			}
 			if (key == "idDistrict") {
-				if (isNullorEmpty.check(map.get(key).toString())) {
+				if (isNullorEmpty.checkInput(map.get(key))) {
 					query.append(" and districtid =" + map.get(key));
 				}
 			}
 			if (key == "areaRentFrom") {
-				if (isNullorEmpty.check(map.get(key).toString())) {
+				if (isNullorEmpty.checkInput(map.get(key))) {
 					query.append(" and value >= " + map.get(key));
 				}
 			}
 
 			if (key == "areaRentTo") {
-				if (isNullorEmpty.check(map.get(key).toString())) {
+				if (isNullorEmpty.checkInput(map.get(key))) {
 					query.append(" and value <= " + map.get(key));
 				}
 			}
 			if (key == "rentPriceFrom") {
-				if (isNullorEmpty.check(map.get(key).toString())) {
+				if (isNullorEmpty.checkInput(map.get(key))) {
 					query.append(" and rentprice >= " + map.get(key));
 				}
 			}
 			if (key == "rentPriceTo") {
-				if (isNullorEmpty.check(map.get(key).toString())) {
+				if (isNullorEmpty.checkInput(map.get(key))) {
 					query.append(" and rentprice <= " + map.get(key));
 				}
 			}
@@ -106,7 +106,7 @@ public class BuildingRepositoryimpl implements BuildingRepository {
 			buildingJoin(map, types, querySearch);
 			querySearch.append(" where 1=1");
 			buildingNoJoin(map, types, querySearch);
-			System.out.println(querySearch);
+			//System.out.println(querySearch);
 			preparedStatement = connection.prepareStatement(querySearch.toString());
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {

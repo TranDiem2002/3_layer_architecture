@@ -14,21 +14,22 @@ import Model.BuildingReponse.BuildingReponse;
 public class BuildingListViewSearch {
 	
 	public static void input(Map<String, Object> map, List<String> types) {
-		map.put("name", "Building");
+		map.put("name", "");
 		map.put("floorarea", null);
-		map.put("idDistrict", 1 );
+		map.put("idDistrict", null );
 		map.put("ward", "");
 		map.put("street", "");
-		map.put("numberofbasement", 2);
+		map.put("numberofbasement",null);
 		map.put("level", "");
 		map.put("direction", "");
 		map.put("manager", "");
 		map.put("staff",null);
-		map.put("rentPriceFrom", 12);
-		map.put("rentPriceTo", 20);
-		map.put("areaRentFrom", 12);
+		map.put("rentPriceFrom",null);
+		map.put("rentPriceTo",null );
+		map.put("areaRentFrom",null);
 		map.put("areaRentTo", null);
-		types.add("tang-tret");
+//		types.add("tang-tret");
+//		types.add("nguyen-can");
 		
 	}
 

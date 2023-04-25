@@ -9,7 +9,7 @@ public class isNullorEmpty {
 		return true;
 	}
 	
-	public static boolean checkInt(Integer value) {
+	public static boolean checkInput(Object value) {
 		if(value == null) {
 			return false;
 		}
