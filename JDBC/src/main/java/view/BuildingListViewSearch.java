@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
-
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 
 import Controller.BuildingController;
 import Model.BuildingReponse.BuildingReponse;
