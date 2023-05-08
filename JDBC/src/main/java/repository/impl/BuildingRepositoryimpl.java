@@ -13,6 +13,7 @@ import java.util.Set;
 import Model.BuildingRequest.BuildingRequest;
 import repository.BuildingRepository;
 import repository.entity.buildingEntity;
+import repository.entity.districtEntity;
 import untils.getConnection;
 import untils.isNullorEmpty;
 
@@ -22,6 +23,7 @@ public class BuildingRepositoryimpl implements BuildingRepository {
 	PreparedStatement preparedStatement = null;
 	ResultSet resultSet = null;
 	getConnection conn = new getConnection();
+	
 
 	public void buildingJoin(Map<String, Object> map, List<String> types, StringBuilder query) {
 

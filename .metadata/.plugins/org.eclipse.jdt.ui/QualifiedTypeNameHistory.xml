@@ -39,10 +39,8 @@
 <fullyQualifiedTypeName name="repository.impl.DistrictEntity"/>
 <fullyQualifiedTypeName name="repository.DistrictRepository"/>
 <fullyQualifiedTypeName name="repository.impl.DistrictRepositoryimpl"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.Map.Entry"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="Service.BuildingService"/>
 <fullyQualifiedTypeName name="java.nio.channels.ScatteringByteChannel"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
@@ -54,10 +52,12 @@
 <fullyQualifiedTypeName name="repository.entity.districtEntity"/>
 <fullyQualifiedTypeName name="javax.xml.ws.Response"/>
 <fullyQualifiedTypeName name="org.modelmapper.ModelMapper"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="repository.entity.buildingEntity"/>
-<fullyQualifiedTypeName name="Model.BuildingReponse.BuildingReponse"/>
 <fullyQualifiedTypeName name="org.modelmapper.internal.bytebuddy.agent.builder.AgentBuilder.CircularityLock.Default"/>
 <fullyQualifiedTypeName name="ma.glasnost.orika.impl.DefaultMapperFactory"/>
 <fullyQualifiedTypeName name="ModelMapper.baseMapper"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="repository.entity.buildingEntity"/>
+<fullyQualifiedTypeName name="Model.BuildingReponse.BuildingReponse"/>
 </qualifiedTypeNameHistroy>

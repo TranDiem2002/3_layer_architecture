@@ -11,9 +11,9 @@ import Model.BuildingReponse.BuildingReponse;
 public class BuildingListViewSearch {
 	
 	public static void input(Map<String, Object> map, List<String> types) {
-		map.put("name", "");
+		map.put("name", "Building");
 		map.put("floorarea", null);
-		map.put("idDistrict", null );
+		map.put("idDistrict",null );
 		map.put("ward", "");
 		map.put("street", "");
 		map.put("numberofbasement",null);
