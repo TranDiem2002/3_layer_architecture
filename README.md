@@ -3,7 +3,7 @@ Building Management
 Chức năng tìm kiếm toà nhà:
   -Tìm kiếm theo tên tòa nhà: tìm kiếm đúng, tìm kiếm gần đúng.
   -Tìm kiếm diện tích sàn.
-  -Tìm kiếm theo đại chỉ: Đường, Phường, Quận.
+  -Tìm kiếm theo địa chỉ: Đường, Phường, Quận.
   -Tìm kiếm theo số tầng, hướng, hạng.
   -Tìm kiếm theo giá cho thuê khoảng từ bao nhiêu đến bao nhiêu.
   -Tìm kiếm theo diện tích thuê theo khoảng.
